@@ -1,0 +1,227 @@
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .reports-container { max-width: 1200px; margin: 2rem auto; padding: 2rem; }
+        .reports-header { background: white; padding: 1. 5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .filter-section { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .filter-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .filter-row select { padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; }
+        .report-section { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .report-title { color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .chart-placeholder { background: var(--light-bg); height: 300px; border-radius: 8px; display: flex; align-items: center; justify-content:  center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 1rem; }
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom:  2rem; }
+        .stat-card { background: var(--light-bg); padding: 1rem; border-radius:  8px; }
+        .stat-label { color: var(--text-light); font-size: 0.9rem; }
+        .stat-value { font-size: 1.8rem; font-weight: bold; color: var(--secondary-color); margin-top: 0.5rem; }
+        .export-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .export-buttons button { padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        table { width: 100%; border-collapse: collapse; margin-top:  1rem; }
+        table th { background: var(--primary-color); color: white; padding: 1rem; text-align: left; }
+        table td { padding: 1rem; border-bottom: 1px solid var(--border-color); }
+        table tr:hover { background: var(--light-bg); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-section">
+                    <img src="../assets/logo.png" alt="School Logo" class="logo">
+                    <div class="school-info">
+                        <h1>GDSTC Kafin-Hausa</h1>
+                        <p>Reports & Analytics</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reports-container">
+        <div class="reports-header">
+            <h1 style="color: var(--primary-color); margin: 0;">Academic Reports & Analytics</h1>
+            <p style="color: var(--text-light); margin: 0.5rem 0 0;">Generate and analyze academic performance data</p>
+        </div>
+
+        <div class="filter-section">
+            <h3 style="color: var(--primary-color); margin-top: 0;">Report Filters</h3>
+            <div class="filter-row">
+                <select>
+                    <option>Select Academic Session</option>
+                    <option>2025/2026</option>
+                    <option>2024/2025</option>
+                    <option>2023/2024</option>
+                </select>
+                <select>
+                    <option>Select Term</option>
+                    <option>First Term</option>
+                    <option>Second Term</option>
+                    <option>Third Term</option>
+                </select>
+                <select>
+                    <option>Select Class</option>
+                    <option>SS1</option>
+                    <option>SS2</option>
+                    <option>SS3</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary">Generate Report</button>
+                <button class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+
+        <!-- Overall Performance Report -->
+        <div class="report-section">
+            <h3 class="report-title"><i class="fas fa-chart-bar"></i> Overall Academic Performance</h3>
+            <div class="chart-placeholder">
+                <p>Chart visualization would appear here</p>
+            </div>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-label">Average Class Score</div>
+                    <div class="stat-value">76.5%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Pass Rate</div>
+                    <div class="stat-value">94%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Fail Rate</div>
+                    <div class="stat-value">6%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Students</div>
+                    <div class="stat-value">1,245</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subject Performance Report -->
+        <div class="report-section">
+            <h3 class="report-title"><i class="fas fa-book"></i> Subject-wise Performance</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Average Score</th>
+                        <th>Pass Rate</th>
+                        <th>Fail Rate</th>
+                        <th>Grade Distribution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>English Language</td>
+                        <td>78.5</td>
+                        <td>96%</td>
+                        <td>4%</td>
+                        <td>A:  45% | B: 35% | C: 16% | D: 4%</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>82.3</td>
+                        <td>98%</td>
+                        <td>2%</td>
+                        <td>A: 52% | B: 32% | C: 12% | D: 2%</td>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>75.8</td>
+                        <td>92%</td>
+                        <td>8%</td>
+                        <td>A: 40% | B: 35% | C: 20% | D: 5%</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>72.1</td>
+                        <td>88%</td>
+                        <td>12%</td>
+                        <td>A: 32% | B: 35% | C: 25% | D: 8%</td>
+                    </tr>
+                    <tr>
+                        <td>Biology</td>
+                        <td>80.2</td>
+                        <td>95%</td>
+                        <td>5%</td>
+                        <td>A: 48% | B: 33% | C: 15% | D: 4%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Class Performance Report -->
+        <div class="report-section">
+            <h3 class="report-title"><i class="fas fa-graduation-cap"></i> Class Performance Ranking</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Class</th>
+                        <th>Total Students</th>
+                        <th>Average Score</th>
+                        <th>Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1st</strong></td>
+                        <td>SS3 Science</td>
+                        <td>28</td>
+                        <td>87.5</td>
+                        <td><span style="background: #d1fae5; color: #065f46; padding: 0.3rem 0.8rem; border-radius: 20px;">Excellent</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2nd</strong></td>
+                        <td>SS2 Combined</td>
+                        <td>35</td>
+                        <td>81.2</td>
+                        <td><span style="background: #bfdbfe; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px;">Very Good</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3rd</strong></td>
+                        <td>SS1 Science</td>
+                        <td>40</td>
+                        <td>76.8</td>
+                        <td><span style="background: #fef08a; color: #713f12; padding: 0.3rem 0.8rem; border-radius: 20px;">Good</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Options -->
+        <div class="report-section">
+            <h3 class="report-title"><i class="fas fa-download"></i> Export Report</h3>
+            <div class="export-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i> Export as PDF
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-file-excel"></i> Export as Excel
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-print"></i> Print Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GDSTC Kafin-Hausa.  All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

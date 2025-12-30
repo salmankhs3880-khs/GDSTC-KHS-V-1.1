@@ -1,0 +1,35 @@
+# Database Configuration
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=gdstc_results
+DB_PORT=3306
+
+# JWT Configuration
+JWT_SECRET=your-secret-key-change-in-production
+
+# Email Configuration
+EMAIL_SERVICE=gmail
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-app-password
+EMAIL_FROM=noreply@gdstc.edu.ng
+
+# Twilio Configuration (SMS)
+TWILIO_ACCOUNT_SID=your-twilio-account-sid
+TWILIO_AUTH_TOKEN=your-twilio-auth-token
+TWILIO_PHONE_NUMBER=+1234567890
+
+# AWS S3 Configuration
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+AWS_REGION=us-east-1
+AWS_S3_BUCKET=gdstc-storage
+
+# Video Call Configuration
+VIDEO_PROVIDER=agora
+AGORA_APP_ID=your-agora-app-id
+AGORA_APP_CERTIFICATE=your-agora-certificate
+
+# Server Configuration
+PORT=5000
+NODE_ENV=development

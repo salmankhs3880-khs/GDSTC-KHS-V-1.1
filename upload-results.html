@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Results - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style. css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .upload-container { max-width: 800px; margin: 3rem auto; padding: 2rem; }
+        .upload-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow-lg); }
+        .upload-zone { border: 2px dashed var(--secondary-color); border-radius: 8px; padding: 3rem; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .upload-zone:hover { background: rgba(42, 82, 152, 0.05); }
+        .upload-zone.active { background: rgba(42, 82, 152, 0.1); border-color: var(--accent-color); }
+        .upload-icon { font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; }
+        .upload-zone p { color: var(--text-light); margin: 0; }
+        .file-list { margin-top: 2rem; }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--light-bg); border-radius: 5px; margin-bottom: 0.5rem; }
+        . progress-bar { width: 100%; height: 5px; background: var(--border-color); border-radius: 10px; margin-top: 1rem; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--success-color); width: 0%; transition: width 0.3s; }
+        .upload-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .upload-buttons button { flex: 1; padding: 1rem; border: none; border-radius: 5px; font-weight: 600; cursor:  pointer; }
+        .success-msg { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; display: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-section">
+                    <img src="../assets/logo.png" alt="School Logo" class="logo">
+                    <div class="school-info">
+                        <h1>GDSTC Kafin-Hausa</h1>
+                        <p>Results Upload</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="upload-container">
+        <h1 style="color: var(--primary-color); margin-bottom: 1.5rem;">Upload Academic Results</h1>
+
+        <div class="success-msg" id="successMsg">
+            <i class="fas fa-check-circle"></i> Results uploaded successfully!
+        </div>
+
+        <div class="upload-card">
+            <div style="margin-bottom: 2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color:  var(--primary-color);">Select Class</label>
+                <select style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px;">
+                    <option>Choose a class...</option>
+                    <option>Physics - SS2</option>
+                    <option>Chemistry - SS3</option>
+                    <option>English - SS1</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-color);">Select Term</label>
+                <select style="width: 100%; padding:  0.8rem; border: 1px solid var(--border-color); border-radius: 5px;">
+                    <option>Choose a term...</option>
+                    <option>First Term</option>
+                    <option>Second Term</option>
+                    <option>Third Term</option>
+                </select>
+            </div>
+
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3 style="color: var(--primary-color); margin: 1rem 0;">Drag & Drop Your CSV File Here</h3>
+                <p>or click to browse from your computer</p>
+                <p style="font-size: 0.85rem; color: var(--text-light);">Supported format: CSV (. csv)</p>
+                <input type="file" id="fileInput" accept=".csv" style="display: none;">
+            </div>
+
+            <div class="file-list" id="fileList" style="display: none;">
+                <h4 style="color: var(--primary-color);">Files to Upload</h4>
+                <div class="file-item" id="fileItem">
+                    <div>
+                        <i class="fas fa-file-csv" style="color: var(--secondary-color); margin-right: 0.5rem;"></i>
+                        <span id="fileName">results.csv</span>
+                    </div>
+                    <button class="btn-sm" style="background: var(--danger-color); color: white; padding: 0.4rem 0.8rem; border: none; border-radius: 3px; cursor: pointer;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="upload-buttons">
+                <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i> Choose File
+                </button>
+                <button class="btn btn-primary" onclick="uploadFile()">
+                    <i class="fas fa-upload"></i> Upload Results
+                </button>
+            </div>
+        </div>
+
+        <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+            <h4 style="color: var(--primary-color);">CSV Format Requirements</h4>
+            <p style="color: var(--text-light);">Your CSV file should have the following columns: </p>
+            <code style="background: white; padding: 1rem; border-radius: 5px; display: block; margin-top: 1rem; color: var(--text-dark);">StudentName, AdmissionNo, TestScore, Assignment, ExamScore</code>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GDSTC Kafin-Hausa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        uploadZone.addEventListener('click', () => fileInput.click());
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('active');
+        });
+        uploadZone. addEventListener('dragleave', () => uploadZone.classList.remove('active'));
+        uploadZone. addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('active');
+            fileInput.files = e.dataTransfer.files;
+            showFile();
+        });
+
+        

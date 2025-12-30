@@ -1,0 +1,66 @@
+// Configuration Module
+
+module.exports = {
+    // Database Configuration
+    database: {
+        host: process. env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD || '',
+        database: process.env. DB_NAME || 'gdstc_results',
+        port: process.env.DB_PORT || 3306
+    },
+
+    // JWT Configuration
+    jwt:  {
+        secret: process.env.JWT_SECRET || 'your-secret-key-change-in-production',
+        expiresIn: '24h'
+    },
+
+    // Email Configuration
+    email: {
+        service: process.env.EMAIL_SERVICE || 'gmail',
+        user: process.env.EMAIL_USER,
+        password: process.env. EMAIL_PASSWORD,
+        from: process.env.EMAIL_FROM || 'noreply@gdstc.edu. ng'
+    },
+
+    // SMS/Twilio Configuration
+    twilio: {
+        accountSid: process.env. TWILIO_ACCOUNT_SID,
+        authToken: process. env.TWILIO_AUTH_TOKEN,
+        phoneNumber: process.env.TWILIO_PHONE_NUMBER
+    },
+
+    // File Upload Configuration
+    upload: {
+        maxSize: 50 * 1024 * 1024, // 50MB
+        allowedFormats: ['pdf', 'csv', 'xlsx', 'jpg', 'png']
+    },
+
+    // AWS S3 Configuration (for cloud storage)
+    s3: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        region: process.env.AWS_REGION || 'us-east-1',
+        bucket: process.env.AWS_S3_BUCKET
+    },
+
+    // Video Call Configuration (Agora or Twilio Video)
+    videoCall: {
+        provider: process.env.VIDEO_PROVIDER || 'agora', // 'agora' or 'twilio'
+        agoraAppId: process.env.AGORA_APP_ID,
+        agoraAppCertificate: process.env. AGORA_APP_CERTIFICATE,
+        twilioAccountSid: process.env.TWILIO_ACCOUNT_SID,
+        twilioAuthToken: process.env.TWILIO_AUTH_TOKEN
+    },
+
+    // 2FA Configuration
+    twoFA: {
+        windowSize: 2, // Time window in minutes
+        timeStep: 30 // Time step in seconds
+    },
+
+    // Language Configuration
+    supportedLanguages: ['en', 'ha', 'ig', 'yo'],
+    defaultLanguage: 'en'
+};

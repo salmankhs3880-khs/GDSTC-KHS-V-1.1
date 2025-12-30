@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Results - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .container-full { max-width: 100%; margin: 0; padding: 0; }
+        .results-container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .back-link { margin-bottom: 1.5rem; }
+        .back-link a { color: var(--secondary-color); text-decoration: none; }
+        .result-filters { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .filter-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .filter-group select { padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; }
+        .result-card { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; box-shadow: var(--shadow); }
+        .result-header { border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .result-header h3 { color: var(--primary-color); margin:  0; }
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+        .score-item { text-align: center; padding: 1rem; background: var(--light-bg); border-radius: 8px; }
+        .score-item h5 { margin: 0 0 0.5rem; color: var(--text-dark); }
+        .score-value { font-size: 1.8rem; font-weight: bold; color: var(--secondary-color); }
+        .score-grade { font-size: 0.9rem; color: var(--text-light); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-section">
+                    <img src="../assets/logo.png" alt="School Logo" class="logo">
+                    <div class="school-info">
+                        <h1>GDSTC Kafin-Hausa</h1>
+                        <p>Results Portal</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="results-container">
+        <div class="back-link">
+            <a href="dashboard.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+
+        <h1 style="color: var(--primary-color); margin-bottom: 1.5rem;">View Your Academic Results</h1>
+
+        <div class="result-filters">
+            <div class="filter-group">
+                <select>
+                    <option>Select Academic Session</option>
+                    <option>2025/2026</option>
+                    <option>2024/2025</option>
+                    <option>2023/2024</option>
+                </select>
+                <select>
+                    <option>Select Term</option>
+                    <option>First Term</option>
+                    <option>Second Term</option>
+                    <option>Third Term</option>
+                </select>
+                <button class="btn btn-primary" style="width: 100%;">Filter Results</button>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <div class="result-header">
+                <h3>2025/2026 Academic Session - All Terms</h3>
+                <p style="margin:  0.5rem 0 0; color: var(--text-light);">Last Updated: 2025-12-30</p>
+            </div>
+            <div class="result-grid">
+                <div class="score-item">
+                    <h5>English</h5>
+                    <div class="score-value">87</div>
+                    <div class="score-grade">Grade A</div>
+                </div>
+                <div class="score-item">
+                    <h5>Mathematics</h5>
+                    <div class="score-value">92</div>
+                    <div class="score-grade">Grade A</div>
+                </div>
+                <div class="score-item">
+                    <h5>Physics</h5>
+                    <div class="score-value">86</div>
+                    <div class="score-grade">Grade A</div>
+                </div>
+                <div class="score-item">
+                    <h5>Chemistry</h5>
+                    <div class="score-value">82</div>
+                    <div class="score-grade">Grade B</div>
+                </div>
+                <div class="score-item">
+                    <h5>Biology</h5>
+                    <div class="score-value">85</div>
+                    <div class="score-grade">Grade A</div>
+                </div>
+                <div class="score-item">
+                    <h5>Computer Sci</h5>
+                    <div class="score-value">91</div>
+                    <div class="score-grade">Grade A</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <div class="result-header">
+                <h3>Detailed Breakdown by Term</h3>
+            </div>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: var(--light-bg);">
+                        <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--border-color);">Subject</th>
+                        <th style="padding: 1rem; text-align: center; border-bottom: 2px solid var(--border-color);">Term 1</th>
+                        <th style="padding: 1rem; text-align: center; border-bottom: 2px solid var(--border-color);">Term 2</th>
+                        <th style="padding: 1rem; text-align: center; border-bottom: 2px solid var(--border-color);">Term 3</th>
+                        <th style="padding: 1rem; text-align: center; border-bottom: 2px solid var(--border-color);">Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding:  1rem;">English Language</td>
+                        <td style="padding: 1rem; text-align: center;">85</td>
+                        <td style="padding: 1rem; text-align: center;">88</td>
+                        <td style="padding: 1rem; text-align: center;">90</td>
+                        <td style="padding: 1rem; text-align: center; font-weight: bold; color: var(--secondary-color);">87.67</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <td style="padding: 1rem;">Mathematics</td>
+                        <td style="padding: 1rem; text-align: center;">92</td>
+                        <td style="padding: 1rem; text-align: center;">89</td>
+                        <td style="padding:  1rem; text-align:  center;">91</td>
+                        <td style="padding: 1rem; text-align: center; font-weight: bold; color: var(--secondary-color);">90.67</td>
+                    </tr>
+                    <tr style="border-bottom:  1px solid var(--border-color);">
+                        <td style="padding: 1rem;">Physics</td>
+                        <td style="padding: 1rem; text-align: center;">88</td>
+                        <td style="padding: 1rem; text-align: center;">85</td>
+                        <td style="padding: 1rem; text-align: center;">87</td>
+                        <td style="padding: 1rem; text-align: center; font-weight:  bold; color: var(--secondary-color);">86.67</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@gdstc.edu.ng</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GDSTC Kafin-Hausa.  All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

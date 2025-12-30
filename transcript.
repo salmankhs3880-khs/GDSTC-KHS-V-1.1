@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Transcript - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min. css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .transcript-container { max-width: 900px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 10px; box-shadow: var(--shadow-lg); }
+        .transcript-header { text-align: center; border-bottom: 3px solid var(--primary-color); padding-bottom: 2rem; margin-bottom: 2rem; }
+        .school-seal { width: 60px; height: 60px; border-radius: 50%; background:  linear-gradient(135deg, var(--primary-color), var(--secondary-color)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; }
+        .transcript-header h1 { color: var(--primary-color); margin: 0.5rem 0; }
+        .transcript-header p { color: var(--text-light); margin: 0.3rem 0; }
+        . student-details { display: grid; grid-template-columns: 1fr 1fr; gap:  2rem; margin-bottom: 2rem; padding: 1rem; background: var(--light-bg); border-radius: 5px; }
+        .detail-item h4 { color: var(--primary-color); margin: 0 0 0.3rem; font-size: 0.9rem; text-transform: uppercase; }
+        .detail-item p { margin: 0; color: var(--text-dark); }
+        .transcript-section { margin-bottom: 2rem; }
+        .transcript-section h3 { color: var(--secondary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        .results-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .summary-card { background: var(--light-bg); padding: 1rem; border-radius: 5px; text-align: center; }
+        .summary-card h5 { color: var(--text-light); margin: 0 0 0.5rem; font-size: 0.9rem; }
+        .summary-card . value { font-size: 1.5rem; font-weight: bold; color: var(--secondary-color); }
+        table { width: 100%; border-collapse: collapse; margin-top:  1rem; }
+        table th { background: var(--primary-color); color: white; padding: 0.8rem; text-align: left; }
+        table td { padding: 0.8rem; border-bottom: 1px solid var(--border-color); }
+        table tr:hover { background: var(--light-bg); }
+        .action-buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
+        @media print {
+            .action-buttons { display: none; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+    <div class="transcript-container">
+        <!-- Header -->
+        <div class="transcript-header">
+            <div class="school-seal"><i class="fas fa-graduation-cap"></i></div>
+            <h1>GOVERNMENT DAY SCIENCE TECHNICAL COLLEGE</h1>
+            <p>Kafin-Hausa, Jigawa State, Nigeria</p>
+            <h2>OFFICIAL ACADEMIC TRANSCRIPT</h2>
+        </div>
+
+        <!-- Student Details -->
+        <div class="student-details">
+            <div>
+                <div class="detail-item">
+                    <h4>Full Name</h4>
+                    <p>John David Ibrahim</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Registration Number</h4>
+                    <p>2022/001234</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Date of Birth</h4>
+                    <p>15th June 2006</p>
+                </div>
+            </div>
+            <div>
+                <div class="detail-item">
+                    <h4>Current Class</h4>
+                    <p>Senior Secondary School III (Science)</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Session</h4>
+                    <p>2024/2025</p>
+                </div>
+                <div class="detail-item">
+                    <h4>Issued Date</h4>
+                    <p>30th December, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="results-summary">
+            <div class="summary-card">
+                <h5>Average Score</h5>
+                <div class="value">87.8%</div>
+            </div>
+            <div class="summary-card">
+                <h5>Grade</h5>
+                <div class="value">A</div>
+            </div>
+            <div class="summary-card">
+                <h5>Position</h5>
+                <div class="value">3rd/150</div>
+            </div>
+            <div class="summary-card">
+                <h5>Performance</h5>
+                <div class="value">Excellent</div>
+            </div>
+        </div>
+
+        <!-- Academic Results -->
+        <div class="transcript-section">
+            <h3>2024/2025 Academic Performance</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>1st Term</th>
+                        <th>2nd Term</th>
+                        <th>3rd Term</th>
+                        <th>Average</th>
+                        <th>Grade</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>English Language</td>
+                        <td>85</td>
+                        <td>88</td>
+                        <td>90</td>
+                        <td><strong>87.67</strong></td>
+                        <td>A</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>92</td>
+                        <td>89</td>
+                        <td>91</td>
+                        <td><strong>90.67</strong></td>
+                        <td>A</td>
+                        <td>Outstanding</td>
+                    </tr>
+                    <tr>
+                        <td>Physics</td>
+                        <td>88</td>
+                        <td>85</td>
+                        <td>87</td>
+                        <td><strong>86.67</strong></td>
+                        <td>A</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry</td>
+                        <td>80</td>
+                        <td>82</td>
+                        <td>84</td>
+                        <td><strong>82.00</strong></td>
+                        <td>B</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>Biology</td>
+                        <td>84</td>
+                        <td>86</td>
+                        <td>85</td>
+                        <td><strong>85.00</strong></td>
+                        <td>A</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>Computer Science</td>
+                        <td>89</td>
+                        <td>91</td>
+                        <td>92</td>
+                        <td><strong>90.67</strong></td>
+                        <td>A</td>
+                        <td>Outstanding</td>
+                    </tr>
+                    <tr>
+                        <td>Further Mathematics</td>
+                        <td>87</td>
+                        <td>85</td>
+                        <td>88</td>
+                        <td><strong>86.67</strong></td>
+                        <td>A</td>
+                        <td>Excellent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Conduct & Behavior -->
+        <div class="transcript-section">
+            <h3>Conduct & Behavior</h3>
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Rating</th>
+                    <th>Comments</th>
+                </tr>
+                <tr>
+                    <td>Punctuality</td>
+                    <td><span style="background: #d1fae5; color: #065f46; padding: 0.3rem 0.8rem; border-radius: 20px;">Excellent</span></td>
+                    <td>Always on time to school and classes</td>
+                </tr>
+                <tr>
+                    <td>Discipline</td>
+                    <td><span style="background: #d1fae5; color: #065f46; padding: 0.3rem 0.8rem; border-radius: 20px;">Excellent</span></td>
+                    <td>Well-behaved and respectful to authorities</td>
+                </tr>
+                <tr>
+                    <td>Participation</td>
+                    <td><span style="background: #d1fae5; color: #065f46; padding: 0.3rem 0.8rem; border-radius: 20px;">Excellent</span></td>
+                    <td>Active in class activities and school programs</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Certification -->
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+            <p style="color: var(--text-light); font-style: italic;">This is an official transcript from Government Day Science Technical College, Kafin-Hausa. </p>
+            <p style="color: var(--text-light); font-size: 0.9rem;">Date Issued: 30th December, 2025</p>
+            <p style="color: var(--text-light); font-size: 0.9rem;">Certificate ID: GDSTC/2025/001234</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="window.print()">
+                <i class="fas fa-print"></i> Print Transcript
+            </button>
+            <button class="btn btn-secondary" onclick="downloadPDF()">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+            <button class="btn btn-secondary" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            alert('PDF download functionality would be implemented with a backend service.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Grades - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min. css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .grades-container { max-width: 1200px; margin: 2rem auto; padding: 2rem; }
+        .grades-header { background: white; padding: 1. 5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .grade-form { background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-color); }
+        .form-group select, .form-group input { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; }
+        .grades-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        .grades-table th { background: var(--primary-color); color: white; padding: 1rem; text-align: left; }
+        .grades-table td { padding: 1rem; border-bottom: 1px solid var(--border-color); }
+        .grades-table input { width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 3px; }
+        .grades-table tr:hover { background: var(--light-bg); }
+        .grade-input { max-width: 80px; }
+        .submit-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+        .submit-buttons button { padding: 0.8rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        . success-message { background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; display: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-section">
+                    <img src="../assets/logo.png" alt="School Logo" class="logo">
+                    <div class="school-info">
+                        <h1>GDSTC Kafin-Hausa</h1>
+                        <p>Grade Management System</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="grades-container">
+        <div class="grades-header">
+            <h1 style="color: var(--primary-color); margin:  0;">Submit Student Grades</h1>
+            <p style="color: var(--text-light); margin: 0.5rem 0 0;">Enter grades for your students</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Grades submitted successfully!
+        </div>
+
+        <div class="grade-form">
+            <form onsubmit="handleSubmit(event)">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap:  2rem;">
+                    <div class="form-group">
+                        <label for="class">Select Class</label>
+                        <select id="class" required>
+                            <option>Choose a class... </option>
+                            <option>Physics - SS2 (30 students)</option>
+                            <option>Chemistry - SS3 (28 students)</option>
+                            <option>Physics - SS1 (32 students)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="term">Select Term</label>
+                        <select id="term" required>
+                            <option>Choose a term...</option>
+                            <option>First Term</option>
+                            <option>Second Term</option>
+                            <option>Third Term</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--primary-color); margin-top: 2rem;">Student Grades</h3>
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Admission No. </th>
+                            <th>Test Score (20)</th>
+                            <th>Assignment (10)</th>
+                            <th>Exam (70)</th>
+                            <th>Total (100)</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John David Ibrahim</td>
+                            <td>2022/001234</td>
+                            <td><input type="number" class="grade-input" min="0" max="20" value="18" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="10" value="9" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="70" value="63" onchange="calculateGrade(this)"></td>
+                            <td><span class="total-grade">90</span></td>
+                            <td><span class="final-grade">A</span></td>
+                        </tr>
+                        <tr>
+                            <td>Amina Abubakar Ahmed</td>
+                            <td>2022/001235</td>
+                            <td><input type="number" class="grade-input" min="0" max="20" value="16" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="10" value="8" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="70" value="58" onchange="calculateGrade(this)"></td>
+                            <td><span class="total-grade">82</span></td>
+                            <td><span class="final-grade">B</span></td>
+                        </tr>
+                        <tr>
+                            <td>Muhammad Hassan Kano</td>
+                            <td>2022/001236</td>
+                            <td><input type="number" class="grade-input" min="0" max="20" value="19" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="10" value="10" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="70" value="65" onchange="calculateGrade(this)"></td>
+                            <td><span class="total-grade">94</span></td>
+                            <td><span class="final-grade">A</span></td>
+                        </tr>
+                        <tr>
+                            <td>Hadiza Mohammed Sani</td>
+                            <td>2022/001237</td>
+                            <td><input type="number" class="grade-input" min="0" max="20" value="14" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="10" value="7" onchange="calculateGrade(this)"></td>
+                            <td><input type="number" class="grade-input" min="0" max="70" value="52" onchange="calculateGrade(this)"></td>
+                            <td><span class="total-grade">73</span></td>
+                            <td><span class="final-grade">B</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="submit-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Submit All Grades
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> Clear Form
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GDSTC Kafin-Hausa.  All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calculateGrade(input) {
+            const row = input.closest('tr');
+            const test = parseFloat(row.querySelectorAll('input')[0].value) || 0;
+            const assignment = parseFloat(row.querySelectorAll('input')[1].value) || 0;
+            const exam = parseFloat(row.querySelectorAll('input')[2].value) || 0;
+            const total = test + assignment + exam;
+            row.querySelector('.total-grade').textContent = total;
+            
+            let grade = 'F';
+            if (total >= 90) grade = 'A';
+            else if (total >= 80) grade = 'B';
+            else if (total >= 70) grade = 'C';
+            else if (total >= 60) grade = 'D';
+            row.querySelector('.final-grade').textContent = grade;
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        }
+
+        function resetForm() {
+            document. querySelector('.grade-form form').reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="../css/style. css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min. css">
+    <style>
+        body { background-color: var(--light-bg); }
+        .teacher-dashboard { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        .teacher-sidebar { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 2rem 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+        .sidebar-header { padding: 0 1.5rem; margin-bottom: 2rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+        .sidebar-menu { list-style: none; }
+        .sidebar-menu li a { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; color: rgba(255,255,255,0.8); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent; }
+        .sidebar-menu li a:hover, .sidebar-menu li a.active { background:  rgba(0,0,0,0.2); color: white; border-left-color: var(--accent-color); }
+        .teacher-main { padding: 2rem; }
+        .teacher-header { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; }
+        .teacher-info h2 { color: var(--primary-color); margin: 0; }
+        .teacher-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-box { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: var(--shadow); }
+        .stat-box h4 { color: var(--text-light); margin: 0 0 0.5rem; font-size: 0.9rem; text-transform: uppercase; }
+        .stat-value { font-size: 2rem; font-weight: bold; color: var(--secondary-color); }
+        .section-card { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .section-title { color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .class-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .class-item { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 1.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        . class-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .class-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .class-students { font-size: 0.9rem; opacity: 0.9; }
+        @media (max-width: 768px) { 
+            .teacher-dashboard { grid-template-columns: 1fr; }
+            .teacher-sidebar { position: fixed; left: -250px; width: 250px; height: 100vh; z-index: 1000; transition: left 0.3s; }
+            .teacher-main { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="teacher-dashboard">
+        <!-- Sidebar -->
+        <aside class="teacher-sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Panel</h3>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin:  0;">GDSTC Kafin-Hausa</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> My Classes</a></li>
+                <li><a href="#"><i class="fas fa-pencil-alt"></i> Submit Grades</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Class Performance</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Attendance</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="teacher-main">
+            <!-- Header -->
+            <div class="teacher-header">
+                <div class="teacher-info">
+                    <h2>Welcome, Mr. Ahmed Hassan</h2>
+                    <p style="color: var(--text-light); margin:  0;">Science Department Head</p>
+                </div>
+                <div class="teacher-avatar">AH</div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>Classes Teaching</h4>
+                    <div class="stat-value">6</div>
+                    <p style="color: var(--text-light); margin: 0.5rem 0 0;">Total students:  180</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Grades Submitted</h4>
+                    <div class="stat-value">85%</div>
+                    <p style="color: var(--success-color); margin: 0.5rem 0 0;">27 out of 32 students</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Attendance Rate</h4>
+                    <div class="stat-value">92%</div>
+                    <p style="color: var(--success-color); margin: 0.5rem 0 0;">Average across all classes</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Pending Reviews</h4>
+                    <div class="stat-value">5</div>
+                    <p style="color: var(--warning-color); margin: 0.5rem 0 0;">Student assessments</p>
+                </div>
+            </div>
+
+            <!-- My Classes -->
+            <div class="section-card">
+                <h3 class="section-title">My Classes</h3>
+                <div class="class-list">
+                    <div class="class-item">
+                        <div class="class-name">Physics - SS2</div>
+                        <div class="class-students">30 Students</div>
+                        <button class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; width: 100%; border: 1px solid white; background: transparent;">View Class</button>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-name">Chemistry - SS3</div>
+                        <div class="class-students">28 Students</div>
+                        <button class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; width:  100%; border: 1px solid white; background: transparent;">View Class</button>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-name">Physics - SS1</div>
+                        <div class="class-students">32 Students</div>
+                        <button class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; width: 100%; border: 1px solid white; background: transparent;">View Class</button>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-name">Advanced Physics - SS3</div>
+                        <div class="class-students">25 Students</div>
+                        <button class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; width: 100%; border: 1px solid white; background: transparent;">View Class</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section-card">
+                <h3 class="section-title">Quick Actions</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button class="btn btn-primary" style="padding: 1rem; text-align: left;">
+                        <i class="fas fa-upload" style="margin-right: 0.5rem;"></i> Submit Student Grades
+                    </button>
+                    <button class="btn btn-primary" style="padding: 1rem; text-align: left;">
+                        <i class="fas fa-file-alt" style="margin-right: 0.5rem;"></i> Mark Attendance
+                    </button>
+                    <button class="btn btn-primary" style="padding: 1rem; text-align: left;">
+                        <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i> View Analytics
+                    </button>
+                    <button class="btn btn-primary" style="padding: 1rem; text-align: left;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> Send Message
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="section-card">
+                <h3 class="section-title">Recent Activities</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; align-items: center; padding: 1rem; background: var(--light-bg); border-radius: 8px;">
+                        <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <div>
+                            <p style="margin: 0; font-weight: 600;">Grades submitted for SS2 Physics</p>
+                            <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">2025-12-28 at 2:45 PM</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items:  center; padding: 1rem; background: var(--light-bg); border-radius: 8px;">
+                        <i class="fas fa-file-alt" style="color: var(--secondary-color); margin-right: 1rem; font-size: 1.5rem;"></i>
+                        <div>
+                            <p style="margin: 0; font-weight: 600;">Attendance marked for all classes</p>
+                            <p style="margin: 0; font-size: 0.85rem; color: var(--text-light);">2025-12-27 at 8:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

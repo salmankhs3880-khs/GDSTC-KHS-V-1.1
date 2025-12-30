@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Analytics - GDSTC Kafin-Hausa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart. min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        body { background-color: var(--light-bg); }
+        .analytics-container { max-width: 1400px; margin: 2rem auto; padding: 2rem; }
+        .analytics-header { background: white; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); }
+        .filter-section { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .filter-section select { padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .chart-card { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: var(--shadow); }
+        .chart-title { color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .chart-container { position: relative; height: 400px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 1.5rem; border-radius: 10px; }
+        .stat-value { font-size: 2rem; font-weight: bold; margin-top: 0.5rem; }
+        @media (max-width: 1024px) {
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo-section">
+                    <img src="assets/logo.png" alt="School Logo" class="logo">
+                    <div class="school-info">
+                        <h1>GDSTC Kafin-Hausa</h1>
+                        <p>Advanced Analytics Dashboard</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="analytics-container">
+        <div class="analytics-header">
+            <h1 style="color: var(--primary-color); margin: 0;">Advanced Analytics & Reporting</h1>
+            <p style="color: var(--text-light); margin: 0.5rem 0 0;">Comprehensive data analysis and performance insights</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <select id="sessionFilter">
+                <option>Select Academic Session</option>
+                <option>2025/2026</option>
+                <option>2024/2025</option>
+            </select>
+            <select id="termFilter">
+                <option>Select Term</option>
+                <option>First Term</option>
+                <option>Second Term</option>
+                <option>Third Term</option>
+            </select>
+            <select id="classFilter">
+                <option>Select Class</option>
+                <option>SS1</option>
+                <option>SS2</option>
+                <option>SS3</option>
+            </select>
+            <button class="btn btn-primary" onclick="loadAnalytics()">Load Data</button>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-users" style="font-size: 2rem; opacity: 0.8;"></i>
+                <div class="stat-value" id="totalStudents">1,245</div>
+                <p style="margin:  0; opacity: 0.9;">Total Students</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-award" style="font-size: 2rem; opacity: 0.8;"></i>
+                <div class="stat-value" id="avgScore">76.5%</div>
+                <p style="margin: 0; opacity: 0.9;">Average Score</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle" style="font-size:  2rem; opacity: 0.8;"></i>
+                <div class="stat-value" id="passRate">94%</div>
+                <p style="margin: 0; opacity: 0.9;">Pass Rate</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line" style="font-size: 2rem; opacity: 0.8;"></i>
+                <div class="stat-value" id="topGrade">A</div>
+                <p style="margin: 0; opacity:  0.9;">Most Common Grade</p>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <!-- Subject Performance -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-book"></i> Subject Performance</h3>
+                <div class="chart-container">
+                    <canvas id="subjectChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Grade Distribution -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-pie-chart"></i> Grade Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="gradeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Performance Trend -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-line"></i> Performance Trend</h3>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Class Comparison -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-bar"></i> Class Comparison</h3>
+                <div class="chart-container">
+                    <canvas id="classChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Gender Distribution -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-user-circle"></i> Student Demographics</h3>
+                <div class="chart-container">
+                    <canvas id="genderChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Attendance vs Performance -->
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-calendar-check"></i> Attendance vs Performance</h3>
+                <div class="chart-container">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GDSTC Kafin-Hausa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/advanced-analytics.js"></script>
+</body>
+</html>
